@@ -1,17 +1,14 @@
 var express = require('express'),
   app = express(),
-  mongoose = require('mongoose'),
-  Movie = require('./api/models/movieModel'), 
   bodyParser = require('body-parser'),
   port = process.env.PORT || 3000;
 
-  mongoose.Promise = global.Promise;
-  //mongoose.connect('mongodb+srv://YOURUSER:YOURPASSWORD@YOURHOST/YOURDATABASE?retryWrites=true');
-  //It might look something like below:
-  //mongoose.connect('mongodb+srv://admin:12345@cluster0-1a1a1.mongodb.net/movieapp?retryWrites=true');
-
-  app.use(bodyParser.urlencoded({ extended: true }));
-  app.use(bodyParser.json());
+  app.use(bodyParser.json())
+  app.use(
+    bodyParser.urlencoded({
+      extended: true,
+    })
+  )
 
   var routes = require('./api/routes/routes');
   routes(app);
